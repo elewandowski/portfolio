@@ -5,7 +5,7 @@ interface Props {
 
 const {
   links = [
-    { href: "/portfolio", label: "Home" },
+    { href: "/", label: "Home" },
     { href: "/about", label: "About" },
     { href: "/projects", label: "Projects" },
     { href: "/contact", label: "Contact" },
@@ -19,7 +19,7 @@ const {
       {
         links.map((link) => (
           <li>
-            <a href={link.href}>{link.label}</a>
+            <a href={`${import.meta.env.BASE_URL}${link.href}`}>{link.label}</a>
           </li>
         ))
       }
