@@ -1,5 +1,6 @@
 ---
 import Header from "../components/Header.astro";
+import background from "../assets/background.svg";
 ---
 
 <!doctype html>
@@ -15,6 +16,7 @@ import Header from "../components/Header.astro";
   <body>
     <Header />
     <div class="main-content">
+      <img id="background" src={background.src} alt="" fetchpriority="high" />
       <slot />
     </div>
   </body>
@@ -44,5 +46,15 @@ import Header from "../components/Header.astro";
     /* .main-content {
       margin-left: 0;
     } */
+  }
+
+  #background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    /* filter: blur(100px); */
   }
 </style>
