@@ -1,0 +1,28 @@
+---
+interface Props {
+  href: string;
+}
+
+const { href } = Astro.props;
+---
+
+<a href={`${import.meta.env.BASE_URL}${href}`}>
+  <slot />
+</a>
+
+<style>
+  a {
+    display: block;
+    padding: 10px 12px;
+    color: #111827;
+    text-decoration: none;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition:
+      border-color 0.2s;
+  }
+
+  a:hover {
+    border: 1px solid #9ca3af;
+  }
+</style>
