@@ -13,22 +13,26 @@ const projects = await getCollection("projects");
       <h1>Projects</h1>
       <p>Various projects I have built</p>
     </section>
-    {
-      projects.map((project) => {
-        return (
-          <ProjectCard
-            title={project.data.title}
-            description={project.data.description}
-          />
-        );
-      })
-    }
+    <section class="projects">
+      {
+        projects.map((project) => {
+          return (
+            <ProjectCard
+              title={project.data.title}
+              description={project.data.description}
+            />
+          );
+        })
+      }
+    </section>
   </main>
 </Layout>
 
 <style>
-  .container {
-    padding: 10px;
+  .projects {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 </style>
 
