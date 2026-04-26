@@ -30,7 +30,6 @@ const {
 <style>
   #header {
     display: flex;
-    justify-content: center;
     width: 100%;
     box-sizing: border-box;
     background: rgba(255, 255, 255, 0.85);
@@ -43,12 +42,19 @@ const {
     z-index: 100;
   }
 
+  nav {
+    margin: auto;
+    width: 600px;
+  }
+
   nav ul {
     display: flex;
     gap: 10px;
     list-style: none;
     margin: 0;
-    padding: 0 16px;
-    min-width: 600px;
+    padding: 0;
+  }
+
+  @media screen {
   }
 </style>
