@@ -1,8 +1,24 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, fontProviders } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://elewandowski.github.io",
   base: "/portfolio",
+  fonts: [
+    {
+      provider: fontProviders.local(),
+      name: "LibreBaskerville",
+      cssVariable: "--font-LibreBaskerville",
+      options: {
+        variants: [
+          {
+            src: ["./src/assets/LibreBaskerville-Regular.ttf"],
+            weight: "normal",
+            style: "normal",
+          },
+        ],
+      },
+    },
+  ],
 });

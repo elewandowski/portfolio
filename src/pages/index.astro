@@ -6,7 +6,7 @@ import Layout from "../layouts/Layout.astro";
   <main>
     <section id="hero">
       <h1>Emil Lewandowski's Portfolio</h1>
-      <p>Software Engineer based in Berlin</p>
+      <p class="subtitle">Software Engineer based in Berlin</p>
       <br />
       <a href="https://www.linkedin.com/in/emillewandowski/">
         Linkedin Profile
@@ -23,5 +23,10 @@ import Layout from "../layouts/Layout.astro";
 <style>
   h2 {
     margin: 24px 0 8px 0;
+  }
+
+  .subtitle {
+    color: #555;
+    font-family: var(--font-LibreBaskerville);
   }
 </style>

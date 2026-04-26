@@ -1,11 +1,13 @@
 ---
 import Header from "../components/Header.astro";
 import background from "../assets/background.svg";
+import { Font } from "astro:assets";
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
+    <Font cssVariable="--font-LibreBaskerville" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -57,7 +59,7 @@ import background from "../assets/background.svg";
     align-items: start;
     flex-direction: column;
     justify-content: center;
-    padding: 16px;
+    margin: 16px;
   }
 
   h1 {
@@ -153,8 +155,8 @@ import background from "../assets/background.svg";
     }
 
     #hero {
-      display: block;
-      padding-top: 10%;
+      /* display: block; */
+      /* padding-top: 10%; */
     }
 
     #links {
