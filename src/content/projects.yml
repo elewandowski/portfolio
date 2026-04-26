@@ -1,7 +1,7 @@
 - id: merger
   title: Merger
   description: A set of scripts to enable the automatic merging of PR's via Github Actions
-- id: demo-page
+- id: demo
   title: Demo page
   description: A dynamic React form for receiving demo request submissions
 - id: portfolio
