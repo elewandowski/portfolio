@@ -1,7 +1,37 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+
+import { getCollection } from "astro:content";
+
+const projects = await getCollection("projects");
 ---
 
 <Layout>
-  <div></div>
+  <main>
+    <section id="hero">
+      <h1>Projects</h1>
+      <p>Various projects I have built</p>
+    </section>
+    {
+      projects.map((project) => {
+        return (
+          <ProjectCard
+            title={project.data.title}
+            description={project.data.description}
+          />
+        );
+      })
+    }
+  </main>
 </Layout>
+
+<style>
+  .container {
+    padding: 10px;
+  }
+</style>
+
+<script is:inline define:vars={{ projects }}>
+  console.log(projects);
+</script>
