@@ -1,5 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import Umbrella from "../assets/umbrella.svg";
 ---
 
 <Layout>
@@ -7,6 +9,7 @@ import Layout from "../layouts/Layout.astro";
     <section id="hero">
       <h1>Emil Lewandowski's Portfolio</h1>
       <p class="subtitle">Software Engineer based in Berlin</p>
+      <Umbrella class="umbrella" />
       <br />
       <a href="https://www.linkedin.com/in/emillewandowski/">
         Linkedin Profile
@@ -16,11 +19,36 @@ import Layout from "../layouts/Layout.astro";
         Pitch <br />
         Wunderflats
       </p>
+      <h3>Skillset:</h3>
+      <p>
+        Frontend development <br />
+        QA engineering <br />
+        CI/CD pipelines
+      </p>
+      <h3>Technologies:</h3>
+      <p>
+        React <br />
+        Github Actions <br />
+        CircleCI <br />
+        Cypress <br />
+        Playwright <br />
+        Jest <br />
+      </p>
     </section>
   </main>
 </Layout>
 
 <style>
+  .umbrella {
+    position: absolute;
+    transform: rotate(27deg);
+    width: 150px;
+    height: 150px;
+    top: 90px;
+    left: 600px;
+    color: #e5e7eb;
+  }
+
   h2 {
     margin: 24px 0 8px 0;
   }
