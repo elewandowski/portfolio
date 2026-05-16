@@ -3,8 +3,6 @@ import { defineConfig, fontProviders } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://elewandowski.github.io",
-  base: "/portfolio",
   fonts: [
     {
       provider: fontProviders.local(),
