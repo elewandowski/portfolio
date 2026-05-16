@@ -13,6 +13,16 @@ import { Font } from "astro:assets";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
+    <meta
+      name="description"
+      content="Emil Lewandowski — Software Engineer based in Berlin. Frontend, QA, and CI/CD work."
+    />
+    <meta property="og:title" content="Emil Lewandowski's Portfolio" />
+    <meta
+      property="og:description"
+      content="Software Engineer based in Berlin. Frontend, QA, and CI/CD work."
+    />
+    <meta property="og:type" content="website" />
     <title>Emil Lewandowski's Portfolio</title>
   </head>
   <body>
@@ -25,6 +35,11 @@ import { Font } from "astro:assets";
 </html>
 
 <style is:global>
+  :root {
+    --accent: #4f46e5;
+    --accent-dark: #3730a3;
+  }
+
   html {
     width: 100%;
     height: 100%;
@@ -50,58 +65,14 @@ import { Font } from "astro:assets";
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 600px;
+    width: 100%;
+    max-width: 760px;
     padding: 16px;
-  }
-
-  #hero {
-    display: flex;
-    align-items: start;
-    flex-direction: column;
-    justify-content: center;
-    margin: 16px;
+    box-sizing: border-box;
   }
 
   h1 {
-    font-size: 22px;
     margin-top: 0.25em;
-  }
-
-  #links {
-    display: flex;
-    gap: 16px;
-  }
-
-  #links a {
-    display: flex;
-    align-items: center;
-    padding: 10px 12px;
-    color: #111827;
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  #links a:hover {
-    color: rgb(78, 80, 86);
-  }
-
-  #links a svg {
-    height: 1em;
-    margin-left: 8px;
-  }
-
-  #links a.button {
-    color: white;
-    background: linear-gradient(83.21deg, #3245ff 0%, #bc52ee 100%);
-    box-shadow:
-      inset 0 0 0 1px rgba(255, 255, 255, 0.12),
-      inset 0 -2px 0 rgba(0, 0, 0, 0.24);
-    border-radius: 10px;
-  }
-
-  #links a.button:hover {
-    color: rgb(230, 230, 230);
-    box-shadow: none;
   }
 
   pre {
@@ -149,26 +120,8 @@ import { Font } from "astro:assets";
   }
 
   @media screen and (max-width: 768px) {
-    #container {
-      display: flex;
-      flex-direction: column;
-    }
-
-    #hero {
-      /* display: block; */
-      /* padding-top: 10%; */
-    }
-
-    #links {
-      flex-wrap: wrap;
-    }
-
-    #links a.button {
-      padding: 14px 18px;
-    }
-
     h1 {
-      line-height: 1.5;
+      line-height: 1.2;
     }
   }
 </style>
