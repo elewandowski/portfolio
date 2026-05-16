@@ -8,21 +8,60 @@ interface Props {
 const { id, title, description } = Astro.props;
 ---
 
-<a href={`/projects/${id}`}>
-  <section class="card">
-    <h2>{title}</h2>
-    <p>
-      {description}
-    </p>
-  </section>
+<a class="card" href={`/projects/${id}`}>
+  <h2>{title}</h2>
+  <p>{description}</p>
+  <span class="arrow">Read more →</span>
 </a>
 
 <style>
   .card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 20px;
     border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    padding: 1rem;
-    width: 100%;
+    border-radius: 12px;
+    background: white;
+    text-decoration: none;
+    color: inherit;
     box-sizing: border-box;
+    transition:
+      border-color 0.15s,
+      transform 0.15s,
+      box-shadow 0.15s;
+  }
+
+  .card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.08);
+  }
+
+  .card h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #0f172a;
+    margin: 0;
+  }
+
+  .card p {
+    font-size: 14px;
+    color: #4b5563;
+    line-height: 1.5;
+    margin: 0;
+    flex-grow: 1;
+  }
+
+  .arrow {
+    margin-top: 8px;
+    font-size: 13px;
+    color: var(--accent);
+    font-weight: 500;
+    transition: transform 0.15s;
+  }
+
+  .card:hover .arrow {
+    transform: translateX(2px);
   }
 </style>

@@ -18,11 +18,103 @@ const { title, description } = Astro.props;
 
 <Layout>
   <main>
-    <h1>{title}</h1>
-    <p>{description}</p>
+    <a class="back" href="/projects">← All projects</a>
+
+    <section id="hero">
+      <p class="eyebrow">Project</p>
+      <h1>{title}</h1>
+      <p class="tagline">{description}</p>
+    </section>
+
+    <section class="block">
+      <h2>Overview</h2>
+      <p class="body">
+        More details about this project will live here — what it does, the
+        problem it solves, and the technical decisions behind it.
+      </p>
+    </section>
   </main>
 </Layout>
 
-<script is:inline define:vars={{ title, description }}>
-  console.log(title, description);
-</script>
+<style>
+  main {
+    gap: 32px;
+  }
+
+  .back {
+    margin: 24px 16px 0;
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.15s;
+  }
+
+  .back:hover {
+    color: var(--accent-dark);
+  }
+
+  #hero {
+    margin: 0 16px;
+    padding: 0 0 8px;
+    width: calc(100% - 32px);
+  }
+
+  .eyebrow {
+    color: var(--accent);
+    font-family: var(--font-LibreBaskerville);
+    font-style: italic;
+    margin-bottom: 4px;
+  }
+
+  #hero h1 {
+    font-size: clamp(36px, 5vw, 48px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0 0 12px;
+    color: #0f172a;
+  }
+
+  .tagline {
+    color: #4b5563;
+    font-family: var(--font-LibreBaskerville);
+    font-size: 18px;
+    line-height: 1.5;
+    max-width: 600px;
+  }
+
+  .block {
+    width: 100%;
+    margin: 0 16px;
+    box-sizing: border-box;
+    padding-right: 32px;
+  }
+
+  .block h2 {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin: 0 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .body {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #374151;
+    max-width: 640px;
+  }
+
+  @media screen and (max-width: 768px) {
+    main {
+      gap: 24px;
+    }
+
+    .block {
+      padding-right: 0;
+    }
+  }
+</style>
