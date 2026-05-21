@@ -5,6 +5,7 @@ import { defineConfig, fontProviders } from "astro/config";
 export default defineConfig({
   site: "https://elewandowski.github.io",
   base: "/portfolio",
+  devToolbar: { enabled: false },
   fonts: [
     {
       provider: fontProviders.local(),
