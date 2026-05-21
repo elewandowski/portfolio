@@ -1,11 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import ProjectCard from "../components/ProjectCard.astro";
-import Umbrella from "../assets/umbrella.svg";
+import Hero from "../components/Hero.astro";
 import { getCollection } from "astro:content";
+import Card from "../components/Card.astro";
 
 const projects = await getCollection("projects");
-const featuredProjects = projects.slice(0, 3);
 
 const experience = [
   {
@@ -35,56 +34,21 @@ const technologies = [
 
 <Layout>
   <main>
-    <section id="hero">
-      <div class="hero-content">
-        <p class="eyebrow">Hi, I'm</p>
-        <h1>Emil Lewandowski</h1>
-        <p class="tagline">Software Engineer based in Berlin</p>
-        <p class="intro">
-          I build reliable web applications and the tooling that keeps them
-          shipping — from frontend interfaces to the CI/CD pipelines and tests
-          behind them.
-        </p>
-        <div class="cta">
-          <a class="btn primary" href="https://www.linkedin.com/in/emillewandowski/" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="currentColor">
-              <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.62 0 4.29 2.38 4.29 5.47v6.27zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z"/>
-            </svg>
-            LinkedIn
-          </a>
-          <a class="btn" href="https://github.com/elewandowski" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="currentColor">
-              <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.55v-2.06c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.69 1.25 3.35.96.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.62 1.58.23 2.75.11 3.04.73.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.4-5.25 5.68.41.36.78 1.05.78 2.12v3.14c0 .31.21.66.8.55A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/>
-            </svg>
-            GitHub
-          </a>
-          <a class="btn" href="/projects">
-            View Projects
-          </a>
-        </div>
-      </div>
-      <Umbrella class="umbrella" />
-    </section>
+    <Hero />
 
     <section class="block">
       <h2>Experience</h2>
       <ul class="experience">
         {
           experience.map((job) => (
-            <li class="job-card">
-              <div class="job-head">
-                <span class="company">{job.company}</span>
-                <span class="period">{job.period}</span>
-              </div>
-              <span class="role">{job.role}</span>
-            </li>
+            <Card title={job.company} description={job.role} />
           ))
         }
       </ul>
     </section>
 
     <section class="block">
-      <h2>What I do</h2>
+      <h2>Skills</h2>
       <ul class="skills">
         {skills.map((skill) => <li>{skill}</li>)}
       </ul>
@@ -98,15 +62,12 @@ const technologies = [
     </section>
 
     <section class="block">
-      <div class="block-head">
-        <h2>Featured projects</h2>
-        <a class="all-link" href="/projects">All projects →</a>
-      </div>
-      <div class="projects-grid">
+      <h2>Featured projects</h2>
+      <div class="projects">
         {
-          featuredProjects.map((project) => (
-            <ProjectCard
-              id={project.data.id}
+          projects.map((project) => (
+            <Card
+              href={project.data.id}
               title={project.data.title}
               description={project.data.description}
             />
@@ -119,109 +80,13 @@ const technologies = [
 
 <style>
   main {
-    gap: 72px;
-  }
-
-  /* Hero */
-  #hero {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin: 32px 16px 0;
-    padding: 8px 0 16px;
-    width: calc(100% - 32px);
-  }
-
-  .hero-content {
-    max-width: 520px;
-  }
-
-  .eyebrow {
-    color: var(--accent);
-    font-family: var(--font-LibreBaskerville);
-    font-style: italic;
-    margin-bottom: 4px;
-  }
-
-  #hero h1 {
-    font-size: clamp(40px, 6vw, 56px);
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    margin: 0 0 12px;
-    color: #0f172a;
-  }
-
-  .tagline {
-    color: #374151;
-    font-family: var(--font-LibreBaskerville);
-    font-size: 18px;
-    margin-bottom: 20px;
-  }
-
-  .intro {
-    font-size: 17px;
-    line-height: 1.6;
-    color: #4b5563;
-    margin-bottom: 28px;
-  }
-
-  .cta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 16px;
-    border-radius: 10px;
-    border: 1px solid #e5e7eb;
-    background: white;
-    color: #111827;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-    transition: border-color 0.15s, color 0.15s, transform 0.15s;
-  }
-
-  .btn:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    transform: translateY(-1px);
-  }
-
-  .btn.primary {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: white;
-  }
-
-  .btn.primary:hover {
-    background: var(--accent-dark);
-    border-color: var(--accent-dark);
-    color: white;
-  }
-
-  .umbrella {
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    width: 140px;
-    height: 140px;
-    color: #e5e7eb;
-    transform: rotate(27deg);
-    opacity: 0.55;
-    pointer-events: none;
-    z-index: -1;
+    gap: 56px;
   }
 
   /* Blocks */
   .block {
     width: 100%;
-    margin: 0 16px;
+    margin: 0;
     box-sizing: border-box;
     padding-right: 32px;
   }
@@ -237,31 +102,6 @@ const technologies = [
     border-bottom: 1px solid #e5e7eb;
   }
 
-  .block-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #e5e7eb;
-    margin-bottom: 20px;
-  }
-
-  .block-head h2 {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
-  }
-
-  .all-link {
-    font-size: 14px;
-    color: var(--accent);
-    text-decoration: none;
-    padding-bottom: 8px;
-  }
-
-  .all-link:hover {
-    color: var(--accent-dark);
-  }
-
   /* Experience */
   .experience {
     list-style: none;
@@ -270,41 +110,6 @@ const technologies = [
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
-  }
-
-  .job-card {
-    padding: 16px;
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-    background: white;
-    transition: border-color 0.15s;
-  }
-
-  .job-card:hover {
-    border-color: #d1d5db;
-  }
-
-  .job-head {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    margin-bottom: 4px;
-  }
-
-  .company {
-    font-weight: 600;
-    color: #0f172a;
-    font-size: 16px;
-  }
-
-  .period {
-    font-size: 12px;
-    color: #6b7280;
-  }
-
-  .role {
-    font-size: 14px;
-    color: #4b5563;
   }
 
   /* Skills */
@@ -343,7 +148,9 @@ const technologies = [
     background: white;
     font-size: 13px;
     color: #374151;
-    transition: border-color 0.15s, color 0.15s;
+    transition:
+      border-color 0.15s,
+      color 0.15s;
   }
 
   .chip:hover {
@@ -352,27 +159,22 @@ const technologies = [
   }
 
   /* Projects */
-  .projects-grid {
+  .projects {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
   }
 
   @media screen and (max-width: 768px) {
-    main {
-      gap: 56px;
-    }
-
-    .umbrella {
-      width: 100px;
-      height: 100px;
-      opacity: 0.35;
-    }
+    /* main {
+      gap: 46px;
+    } */
 
     .experience,
     .skills,
-    .projects-grid {
+    .projects {
       grid-template-columns: 1fr;
+      max-width: 50%;
     }
 
     .block {
