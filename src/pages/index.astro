@@ -19,15 +19,21 @@ const experience = [
   },
 ];
 
-const skills = ["Frontend development", "QA engineering", "CI/CD pipelines"];
+const skills = [
+  "Frontend development",
+  "QA engineering",
+  "CI/CD pipelines",
+  "Developer Experience",
+];
 
 const technologies = [
-  "React",
-  "TypeScript",
-  "Github Actions",
-  "CircleCI",
+  "JavaScript",
   "Cypress",
   "Playwright",
+  "React",
+  "Clojure/ClojureScript",
+  "Github Actions",
+  "CircleCI",
   "Jest",
 ];
 ---
@@ -88,7 +94,6 @@ const technologies = [
     width: 100%;
     margin: 0;
     box-sizing: border-box;
-    padding-right: 32px;
   }
 
   .block h2 {
@@ -161,15 +166,8 @@ const technologies = [
   }
 
   @media screen and (max-width: 768px) {
-    /* main {
-      gap: 46px;
-    } */
-
-    .experience,
-    .skills,
     .projects {
       grid-template-columns: 1fr;
-      max-width: 50%;
     }
 
     .block {
