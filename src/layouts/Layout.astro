@@ -1,5 +1,6 @@
 ---
 import { Font } from "astro:assets";
+import Header from "../components/Header.astro";
 ---
 
 <!doctype html>
@@ -24,6 +25,7 @@ import { Font } from "astro:assets";
     <title>Emil Lewandowski's Portfolio</title>
   </head>
   <body>
+    <Header />
     <div class="main-content">
       <slot />
     </div>
