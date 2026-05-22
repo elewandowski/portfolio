@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import Hero from "../../components/Hero.astro";
 import Card from "../../components/Card.astro";
 
 import { getCollection } from "astro:content";
@@ -9,13 +10,10 @@ const projects = await getCollection("projects");
 
 <Layout>
   <main>
-    <section id="hero">
-      <p class="eyebrow">Selected work</p>
-      <h1>Projects</h1>
-      <p class="tagline">
-        A handful of things I've built — tools, sites, and experiments.
-      </p>
-    </section>
+    <Hero
+      title="Projects"
+      subtitle="A handful of things I've built — tools, sites, and experiments."
+    />
 
     <section class="projects">
       {
@@ -23,7 +21,7 @@ const projects = await getCollection("projects");
           <Card
             href={project.data.id}
             title={project.data.title}
-            description={project.data.description}
+            subtitle={project.data.subtitle}
           />
         ))
       }
@@ -33,52 +31,18 @@ const projects = await getCollection("projects");
 
 <style>
   main {
-    gap: 48px;
-  }
-
-  #hero {
-    margin: 32px 16px 0;
-    padding: 8px 0 8px;
-    width: calc(100% - 32px);
-  }
-
-  .eyebrow {
-    color: var(--accent);
-    font-family: var(--font-LibreBaskerville);
-    font-style: italic;
-    margin-bottom: 4px;
-  }
-
-  #hero h1 {
-    font-size: clamp(36px, 5vw, 48px);
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    margin: 0 0 12px;
-    color: #0f172a;
-  }
-
-  .tagline {
-    color: #4b5563;
-    font-family: var(--font-LibreBaskerville);
-    font-size: 18px;
-    max-width: 520px;
+    gap: 45px;
   }
 
   .projects {
     width: 100%;
-    margin: 0 16px;
     box-sizing: border-box;
-    padding-right: 32px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
 
   @media screen and (max-width: 768px) {
-    main {
-      gap: 32px;
-    }
-
     .projects {
       grid-template-columns: 1fr;
       padding-right: 0;
