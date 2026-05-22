@@ -19,7 +19,9 @@ const {
       {
         links.map((link) => (
           <li>
-            <Button href={link.href}>{link.label}</Button>
+            <Button href={`${import.meta.env.BASE_URL}${link.href}`}>
+              {link.label}
+            </Button>
           </li>
         ))
       }
@@ -35,7 +37,7 @@ const {
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid #e5e7eb;
-    padding: 0.5rem 1rem;
+    padding: 16px;
     font-family:
       Inter, Roboto, "Helvetica Neue", "Arial Nova", "Nimbus Sans", Arial,
       sans-serif;
@@ -44,7 +46,8 @@ const {
 
   nav {
     margin: auto;
-    width: 600px;
+    width: 100%;
+    max-width: 760px;
   }
 
   nav ul {
@@ -53,8 +56,5 @@ const {
     list-style: none;
     margin: 0;
     padding: 0;
-  }
-
-  @media screen {
   }
 </style>

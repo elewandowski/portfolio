@@ -1,60 +1,190 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { Image } from "astro:assets";
+import Hero from "../components/Hero.astro";
+import Section from "../components/Section.astro";
+import { getCollection } from "astro:content";
+import Card from "../components/Card.astro";
+import Button from "../components/Button.astro";
 import Umbrella from "../assets/umbrella.svg";
+import LinkedInIcon from "../assets/linkedin.svg";
+import GitHubIcon from "../assets/github.svg";
+
+const projects = await getCollection("projects");
+
+const experience = [
+  {
+    company: "Pitch",
+    role: "Software Engineer",
+    period: "Most recent",
+  },
+  {
+    company: "Wunderflats",
+    role: "Software Engineer",
+    period: "Previously",
+  },
+];
+
+const skills = [
+  "Frontend development",
+  "QA engineering",
+  "CI/CD pipelines",
+  "Developer Experience",
+];
+
+const technologies = [
+  "JavaScript",
+  "Cypress",
+  "Playwright",
+  "React",
+  "Clojure/ClojureScript",
+  "Github Actions",
+  "CircleCI",
+  "Jest",
+];
 ---
 
 <Layout>
   <main>
-    <section id="hero">
-      <h1>Emil Lewandowski's Portfolio</h1>
-      <p class="subtitle">Software Engineer based in Berlin</p>
-      <!-- <Umbrella class="umbrella" /> -->
-      <br />
-      <a href="https://www.linkedin.com/in/emillewandowski/">
-        Linkedin Profile
-      </a>
-      <h3>Places I've worked:</h3>
-      <p>
-        Pitch <br />
-        Wunderflats
-      </p>
-      <h3>Skillset:</h3>
-      <p>
-        Frontend development <br />
-        QA engineering <br />
-        CI/CD pipelines
-      </p>
-      <h3>Technologies:</h3>
-      <p>
-        React <br />
-        Github Actions <br />
-        CircleCI <br />
-        Cypress <br />
-        Playwright <br />
-        Jest <br />
-      </p>
-    </section>
+    <Umbrella class="umbrella" />
+    <Hero
+      eyebrow="Hi, I'm"
+      title="Emil Lewandowski"
+      subtitle="Software Engineer based in Berlin"
+      description="I build web applications and the tooling that keeps them shipping — from frontend interfaces to the CI/CD pipelines and tests behind them."
+    >
+      <Button href="https://www.linkedin.com/in/emillewandowski/" external>
+        <LinkedInIcon />
+        LinkedIn
+      </Button>
+      <Button href="https://github.com/elewandowski" external>
+        <GitHubIcon />
+        GitHub
+      </Button>
+    </Hero>
+
+    <Section title="Experience">
+      <ul class="experience">
+        {
+          experience.map((job) => (
+            <Card title={job.company} subtitle={job.role} />
+          ))
+        }
+      </ul>
+    </Section>
+
+    <Section title="Skills">
+      <ul class="skills">
+        {skills.map((skill) => <li>{skill}</li>)}
+      </ul>
+    </Section>
+
+    <Section title="Technologies">
+      <ul class="chips">
+        {technologies.map((tech) => <li class="chip">{tech}</li>)}
+      </ul>
+    </Section>
+
+    <!-- <Section title="Featured projects">
+      <div class="projects">
+        {
+          projects.map((project) => (
+            <Card
+              href={project.data.id}
+              title={project.data.title}
+              subtitle={project.data.subtitle}
+            />
+          ))
+        }
+      </div>
+    </Section> -->
   </main>
 </Layout>
 
 <style>
+  main {
+    position: relative;
+    gap: 45px;
+  }
+
   .umbrella {
     position: absolute;
-    transform: rotate(27deg);
-    width: 150px;
-    height: 150px;
-    top: 90px;
-    left: 600px;
+    right: 0;
+    width: 140px;
+    height: 140px;
     color: #e5e7eb;
+
+    opacity: 0.55;
+    pointer-events: none;
+    z-index: -1;
   }
 
-  h2 {
-    margin: 24px 0 8px 0;
+  /* Experience */
+  .experience {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
   }
 
-  .subtitle {
-    color: #555;
-    font-family: var(--font-LibreBaskerville);
+  /* Skills */
+  .skills {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .skills li {
+    padding: 14px 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    background: white;
+    color: #111827;
+    font-size: 15px;
+  }
+
+  /* Chips */
+  .chips {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .chip {
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid #e5e7eb;
+    background: white;
+    font-size: 13px;
+    color: #374151;
+    transition:
+      border-color 0.15s,
+      color 0.15s;
+  }
+
+  /* Projects */
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .umbrella {
+      width: 100px;
+      height: 100px;
+      opacity: 0.35;
+    }
+
+    .projects {
+      grid-template-columns: 1fr;
+    }
   }
 </style>

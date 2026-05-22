@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import ProjectCard from "../../components/ProjectCard.astro";
+import Hero from "../../components/Hero.astro";
+import Card from "../../components/Card.astro";
 
 import { getCollection } from "astro:content";
 
@@ -9,34 +10,42 @@ const projects = await getCollection("projects");
 
 <Layout>
   <main>
-    <section id="hero">
-      <h1>Projects</h1>
-      <p>Various projects I have built</p>
-    </section>
+    <Hero
+      title="Projects"
+      subtitle="A handful of things I've built — tools, sites, and experiments."
+    />
+
     <section class="projects">
       {
-        projects.map((project) => {
-          return (
-            <ProjectCard
-              id={project.data.id}
-              title={project.data.title}
-              description={project.data.description}
-            />
-          );
-        })
+        projects.map((project) => (
+          <Card
+            href={project.data.id}
+            title={project.data.title}
+            subtitle={project.data.subtitle}
+          />
+        ))
       }
     </section>
   </main>
 </Layout>
 
 <style>
+  main {
+    gap: 45px;
+  }
+
   .projects {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .projects {
+      grid-template-columns: 1fr;
+      padding-right: 0;
+    }
   }
 </style>
-
-<script is:inline define:vars={{ projects }}>
-  console.log(projects);
-</script>
