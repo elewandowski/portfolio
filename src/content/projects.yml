@@ -4,7 +4,7 @@
 - id: demo
   title: Demo page
   subtitle: A dynamic React form for receiving demo request submissions.
-  description: Implements debounced validation (for a smooth UX), mobile-first rendering, and proxies submissions through the backend, where further validation takes place, in order to prevent attackers abusing the submission form. Submissions were eventually sent to Customer.io for handling.
+  description: Implements debounced validation (for a smooth UX), mobile-first rendering, and proxies submissions through the backend, to enforce validation, before finally sending the submission to Customer.io for handling.
   img: ../assets/demo-form.png
 - id: portfolio
   title: Portfolio
