@@ -9,14 +9,14 @@ export async function getStaticPaths() {
     params: { project: project.id },
     props: {
       title: project.data.title,
+      subtitle: project.data.subtitle,
       description: project.data.description,
       img: project.data.img,
     },
   }));
 }
 
-const { title, description, img } = Astro.props;
-
+const { title, subtitle, description, img } = Astro.props;
 ---
 
 <Layout>
@@ -24,14 +24,13 @@ const { title, description, img } = Astro.props;
     <section id="hero">
       <p class="eyebrow">Project</p>
       <h1>{title}</h1>
-      <p class="tagline">{description}</p>
+      <p class="tagline">{subtitle}</p>
     </section>
 
     <section class="block">
       <h2>Overview</h2>
       <p class="body">
-        More details about this project will live here — what it does, the
-        problem it solves, and the technical decisions behind it.
+        {description}
       </p>
       {img && <Image src={img} alt={title} />}
     </section>
@@ -111,6 +110,7 @@ const { title, description, img } = Astro.props;
   }
 
   img {
+    padding: 20px 0;
     max-width: 100%;
     height: auto;
   }
