@@ -6,6 +6,7 @@
   subtitle: A dynamic React form for receiving demo request submissions.
   description: Implements debounced validation (for a smooth UX), mobile-first rendering, and proxies submissions through the backend, to enforce validation, before finally sending the submission to Customer.io for handling.
   img: ../assets/demo-form.png
+  url: https://pitch.com/demo
 - id: portfolio
   title: Portfolio
   subtitle: This portfolio website

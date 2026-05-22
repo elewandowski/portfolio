@@ -11,12 +11,13 @@ export async function getStaticPaths() {
       title: project.data.title,
       subtitle: project.data.subtitle,
       description: project.data.description,
+      url: project.data.url,
       img: project.data.img,
     },
   }));
 }
 
-const { title, subtitle, description, img } = Astro.props;
+const { title, subtitle, description, url, img } = Astro.props;
 ---
 
 <Layout>
@@ -32,6 +33,7 @@ const { title, subtitle, description, img } = Astro.props;
       <p class="body">
         {description}
       </p>
+      {url && <a href={url}>Click here to see it</a>}
       {img && <Image src={img} alt={title} />}
     </section>
   </main>
