@@ -4,6 +4,7 @@ import Hero from "../components/Hero.astro";
 import Section from "../components/Section.astro";
 import { getCollection } from "astro:content";
 import Card from "../components/Card.astro";
+import Button from "../components/Button.astro";
 import Umbrella from "../assets/umbrella.svg";
 import LinkedInIcon from "../assets/linkedin.svg";
 import GitHubIcon from "../assets/github.svg";
@@ -51,24 +52,14 @@ const technologies = [
       subtitle="Software Engineer based in Berlin"
       description="I build web applications and the tooling that keeps them shipping — from frontend interfaces to the CI/CD pipelines and tests behind them."
     >
-      <a
-        class="btn"
-        href="https://www.linkedin.com/in/emillewandowski/"
-        target="_blank"
-        rel="noopener"
-      >
+      <Button href="https://www.linkedin.com/in/emillewandowski/" external>
         <LinkedInIcon />
         LinkedIn
-      </a>
-      <a
-        class="btn"
-        href="https://github.com/elewandowski"
-        target="_blank"
-        rel="noopener"
-      >
+      </Button>
+      <Button href="https://github.com/elewandowski" external>
         <GitHubIcon />
         GitHub
-      </a>
+      </Button>
     </Hero>
 
     <Section title="Experience">
@@ -112,31 +103,6 @@ const technologies = [
 <style>
   main {
     gap: 45px;
-  }
-
-  /* Hero slot content */
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 16px;
-    border-radius: 10px;
-    border: 1px solid #e5e7eb;
-    background: white;
-    color: #111827;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-    transition:
-      border-color 0.15s,
-      color 0.15s,
-      transform 0.15s;
-  }
-
-  .btn:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    transform: translateY(-1px);
   }
 
   .umbrella {
