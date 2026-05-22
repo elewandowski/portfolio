@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
+import Section from "../components/Section.astro";
 import { getCollection } from "astro:content";
 import Card from "../components/Card.astro";
 
@@ -42,8 +43,7 @@ const technologies = [
   <main>
     <Hero />
 
-    <section class="block">
-      <h2>Experience</h2>
+    <Section title="Experience">
       <ul class="experience">
         {
           experience.map((job) => (
@@ -51,24 +51,21 @@ const technologies = [
           ))
         }
       </ul>
-    </section>
+    </Section>
 
-    <section class="block">
-      <h2>Skills</h2>
+    <Section title="Skills">
       <ul class="skills">
         {skills.map((skill) => <li>{skill}</li>)}
       </ul>
-    </section>
+    </Section>
 
-    <section class="block">
-      <h2>Technologies</h2>
+    <Section title="Technologies">
       <ul class="chips">
         {technologies.map((tech) => <li class="chip">{tech}</li>)}
       </ul>
-    </section>
+    </Section>
 
-    <section class="block">
-      <h2>Featured projects</h2>
+    <Section title="Featured projects">
       <div class="projects">
         {
           projects.map((project) => (
@@ -80,31 +77,13 @@ const technologies = [
           ))
         }
       </div>
-    </section>
+    </Section>
   </main>
 </Layout>
 
 <style>
   main {
     gap: 45px;
-  }
-
-  /* Blocks */
-  .block {
-    width: 100%;
-    margin: 0;
-    box-sizing: border-box;
-  }
-
-  .block h2 {
-    font-size: 14px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--accent);
-    margin: 0 0 20px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #e5e7eb;
   }
 
   /* Experience */
@@ -168,10 +147,6 @@ const technologies = [
   @media screen and (max-width: 768px) {
     .projects {
       grid-template-columns: 1fr;
-    }
-
-    .block {
-      padding-right: 0;
     }
   }
 </style>
