@@ -25,7 +25,7 @@ const { title, subtitle, description, url, img } = Astro.props;
     <section id="hero">
       <p class="eyebrow">Project</p>
       <h1>{title}</h1>
-      <p class="tagline">{subtitle}</p>
+      <p class="subtitle">{subtitle}</p>
     </section>
 
     <section class="block">
@@ -42,19 +42,6 @@ const { title, subtitle, description, url, img } = Astro.props;
 <style>
   main {
     gap: 32px;
-  }
-
-  .back {
-    margin: 24px 16px 0;
-    color: var(--accent);
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-    transition: color 0.15s;
-  }
-
-  .back:hover {
-    color: var(--accent-dark);
   }
 
   #hero {
@@ -77,7 +64,7 @@ const { title, subtitle, description, url, img } = Astro.props;
     color: #0f172a;
   }
 
-  .tagline {
+  .subtitle {
     color: #4b5563;
     font-family: var(--font-LibreBaskerville);
     font-size: 18px;
