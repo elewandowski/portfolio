@@ -1,6 +1,7 @@
 - id: merger
   title: Merger
   subtitle: An application to automate CI/CD pipelines for PR's via Github Actions
+  description: At Pitch, we replaced Mergify with an in-house tool which I built. The tool connected the Github API, our CI provider (CircleCI) and Github Actions API, to orchestrate the merging of PRs in our repo. The system was designed to automatically merge the main branch into a PR, once all merge conditions had been met, run the CI pipeline, and if it succeeded, to merge the PR. It used the Github Actions API to trigger workflows based on actions on the PR.
 - id: demo
   title: Demo page
   subtitle: A dynamic React form for receiving demo request submissions.
@@ -10,4 +11,4 @@
 - id: portfolio
   title: Portfolio
   subtitle: This portfolio website
-  description: ""
+  description: "This website is an example of my work as a frontend engineer. The site is built with astro and its source code is available on Github."

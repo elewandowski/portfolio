@@ -19,7 +19,7 @@ const experience = [
   },
   {
     company: "Wunderflats",
-    role: "Software Engineer",
+    role: "QA Engineer",
     period: "Previously",
   },
 ];
@@ -50,19 +50,24 @@ const technologies = [
       eyebrow="Hi, I'm"
       title="Emil Lewandowski"
       subtitle="Software Engineer based in Berlin"
-      description="I build web applications and the tooling that keeps them shipping — from frontend interfaces to the CI/CD pipelines and tests behind them."
-    >
-      <Button href="https://www.linkedin.com/in/emillewandowski/" external>
-        <LinkedInIcon />
-        LinkedIn
-      </Button>
-      <Button href="https://github.com/elewandowski" external>
-        <GitHubIcon />
-        GitHub
-      </Button>
-    </Hero>
+      description="I'm a fullstack software engineer with heaps of QA and CI/CD experience."
+    />
 
-    <Section title="Experience">
+    <Section title="Featured projects">
+      <div class="projects">
+        {
+          projects.map((project) => (
+            <Card
+              href={project.data.id}
+              title={project.data.title}
+              subtitle={project.data.subtitle}
+            />
+          ))
+        }
+      </div>
+    </Section>
+
+    <Section title="Companies I've worked for">
       <ul class="experience">
         {
           experience.map((job) => (
@@ -84,19 +89,16 @@ const technologies = [
       </ul>
     </Section>
 
-    <!-- <Section title="Featured projects">
-      <div class="projects">
-        {
-          projects.map((project) => (
-            <Card
-              href={project.data.id}
-              title={project.data.title}
-              subtitle={project.data.subtitle}
-            />
-          ))
-        }
-      </div>
-    </Section> -->
+    <Section title="Links">
+      <Button href="https://www.linkedin.com/in/emillewandowski/" external>
+        <LinkedInIcon />
+        LinkedIn
+      </Button>
+      <Button href="https://github.com/elewandowski" external>
+        <GitHubIcon />
+        GitHub
+      </Button>
+    </Section>
   </main>
 </Layout>
 
