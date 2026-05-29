@@ -1,6 +1,12 @@
 ---
 import { Font } from "astro:assets";
 import Header from "../components/Header.astro";
+
+interface Props {
+  header?: boolean;
+}
+
+const { header = true } = Astro.props;
 ---
 
 <!doctype html>
@@ -28,7 +34,7 @@ import Header from "../components/Header.astro";
     <title>Emil Lewandowski's Portfolio</title>
   </head>
   <body>
-    <Header />
+    {header && <Header />}
     <div class="main-content">
       <slot />
     </div>
