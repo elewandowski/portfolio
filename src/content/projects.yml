@@ -11,4 +11,9 @@
 - id: portfolio
   title: Portfolio
   subtitle: This portfolio website
-  description: "This site is itself an example of my work. It's built with Astro and is a static site. Each project is defined as an entry in a YAML file and each entry gets rendered dynamically as its own page, making adding more projects a breeze. The website is responsive and mobile-first, fonts are self-hosted through Astro's font pipeline, and images are automatically converted to WebP at build time (the demo screenshot, for example, drops from ~350kB to ~50kB). Every push to main kicks off a GitHub Actions workflow that builds the site and deploys it to GitHub Pages. The full source is on GitHub — feel free to dig through it."
+  description: |
+    This website is itself an example of my work. It's built with Astro and is a static site. Each project is defined as an entry in a YAML file and each entry gets rendered dynamically as its own page, making adding more projects a breeze.
+
+    This site is responsive and mobile-first, fonts are self-hosted through Astro's font pipeline, and images are automatically converted to WebP at build time (the demo screenshot, for example, drops from ~350kB to ~50kB).
+
+    Every push to main kicks off a GitHub Actions workflow that builds the site and deploys it to GitHub Pages. The full source is on GitHub — feel free to dig through it.
